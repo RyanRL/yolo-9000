@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+#
+# USE GPU mode to implement the object detection task
+# Invoke like
+#   qsub -v DATAFILE=datafile_value samtools-sam-to-bam.pbs
