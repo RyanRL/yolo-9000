@@ -10,6 +10,7 @@
 #PBS -M liu.6732@osu.edu
 
 rm -rf darknet
+cp /home/liu.6732/yolo9000.weights /home.liu.6732/yolo-9000/yolo9000-weights/
 git clone https://github.com/RyanRL/darknet.git
 export PATH=/usr/local/cuda/9.2.88/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/9.2.88/lib64:$LD_LIBRARY_PATH
