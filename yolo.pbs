@@ -1,5 +1,19 @@
 #!/usr/bin/bash
-#
+# --------------------------------------------------
 # USE GPU mode to implement the object detection task
-# Invoke like
-#   qsub -v DATAFILE=datafile_value samtools-sam-to-bam.pbs
+# 
+
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=28:gpus=1,mem=16GB
+#PBS -j oe
+#PBS -m abe
+#PBS -M liu.6732@osu.edu
+
+rm -rf darknet
+git clone https://github.com/RyanRL/darknet.git
+export PATH=/usr/local/cuda/9.2.88/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/9.2.88/lib64:$LD_LIBRARY_PATH
+cd darknet
+make clean
+make
+./darknet detector test cfg/combine9k.data cfg/yolo9000.cfg ../yolo9000-weights/yolo9000.weights /home/liu.6732/SAVE_IMAGE_LABEL/name.txt
